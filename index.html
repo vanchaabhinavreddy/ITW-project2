@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SATHISH DHAWAN HOSTEL FIX</title>
+    <style>
+        /* Basic Reset & Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            color: #7f8c8d;
+        }
+
+        .container {
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        /* Form Section */
+        .form-section {
+            flex: 1;
+            min-width: 320px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .form-section h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 80px;
+        }
+
+        /* Hidden class for dynamic custom input */
+        .hidden {
+            display: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Dashboard Section */
+        .dashboard-section {
+            flex: 1.5;
+            min-width: 320px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .dashboard-section h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 1.3rem;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+
+        .issue-card {
+            background: #fafafa;
+            border-left: 5px solid #ccc;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Priority Colors for Queue */
+        .issue-card.high {
+            border-left-color: #e74c3c; 
+        }
+
+        .issue-card.medium {
+            border-left-color: #f39c12; 
+        }
+
+        .issue-card.low {
+            border-left-color: #2ecc71; 
+        }
+
+        .issue-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .issue-title {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .badge {
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .badge.high { background-color: #e74c3c; }
+        .badge.medium { background-color: #f39c12; }
+        .badge.low { background-color: #2ecc71; }
+
+        .issue-details {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .issue-footer {
+            font-size: 0.82rem;
+            color: #888;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #eee;
+            padding-top: 6px;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>SATHISH DHAWAN HOSTEL FIX</h1>
+        <p>Report hostel issues – automatically prioritized for administrative action.</p>
+    </header>
+
+    <div class="container">
+        <!-- Left Side: Student Report Form -->
+        <div class="form-section">
+            <h2>Report an Issue</h2>
+            <form>
+                <div class="form-group">
+                    <label for="studentName">Full Name</label>
+                    <input type="text" id="studentName" placeholder="e.g., Rahul Sharma" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="rollNumber">Institute Roll Number</label>
+                    <input type="text" id="rollNumber" placeholder="e.g., 22115042" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="roomNumber">Room Number</label>
+                    <input type="text" id="roomNumber" placeholder="e.g., B-204" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="issueCategory">Select Problem</label>
+                    <select id="issueCategory" onchange="toggleCustomInput(this.value)">
+                        <option value="" disabled selected>-- Select Issue Type --</option>
+                        <option value="Water leakage">Water leakage</option>
+                        <option value="Light repair">Light repair</option>
+                        <option value="Fan repair">Fan repair</option>
+                        <option value="Door or window problem">Door or window problem</option>
+                        <option value="Cupboard repair">Cupboard repair</option>
+                        <option value="No hot water supply in bathroom">No hot water supply in bathroom</option>
+                        <option value="Dogs coming inside hostel">Dogs coming inside hostel</option>
+                        <option value="Problem with LAN cable or wifi">Problem with LAN cable or wifi</option>
+                        <option value="Cleaning hostel room">Cleaning hostel room</option>
+                        <option value="other">Other (Specify below)</option>
+                    </select>
+                </div>
+
+                <!-- Empty blank to enter if problem is not in the list -->
+                <div class="form-group hidden" id="customIssueGroup">
+                    <label for="customIssue">Specify Your Issue</label>
+                    <input type="text" id="customIssue" placeholder="Type your specific issue here...">
+                </div>
+
+                <div class="form-group">
+                    <label for="duration">Suffering Since (Days)</label>
+                    <select id="duration" required>
+                        <option value="" disabled selected>-- Select Duration --</option>
+                        <option value="0-10">0 - 10 days</option>
+                        <option value="10-20">10 - 20 days</option>
+                        <option value="20+">20+ days</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Additional Details (Optional)</label>
+                    <textarea id="description" placeholder="Mention exact location or extra details..."></textarea>
+                </div>
+
+                <button type="submit">Submit Issue</button>
+            </form>
+        </div>
+
+        <!-- Right Side: Prioritized Issues Dashboard (Simulating ML sorted queue) -->
+        <div class="dashboard-section">
+            <h2>Prioritized Issues Queue (Authority View)</h2>
+            <p style="font-size: 0.85rem; color: #7f8c8d; margin-bottom: 15px;">Sorted automatically by severity & duration.</p>
+
+            <!-- High Priority Example -->
+            <div class="issue-card high">
+                <div class="issue-header">
+                    <span class="issue-title">Water leakage</span>
+                    <span class="badge high">High Priority</span>
+                </div>
+                <div class="issue-details">
+                    Main supply pipe leaking near wash basin area.<br>
+                    <strong>Duration:</strong> 20+ days | <strong>Room:</strong> C-102
+                </div>
+                <div class="issue-footer">
+                    <span>Student: Amit Verma (21112034)</span>
+                    <span>Status: Auto-mailed to Warden</span>
+                </div>
+            </div>
+
+            <!-- Medium Priority Example -->
+            <div class="issue-card medium">
+                <div class="issue-header">
+                    <span class="issue-title">Problem with LAN cable or wifi</span>
+                    <span class="badge medium">Medium Priority</span>
+                </div>
+                <div class="issue-details">
+                    No packet connection on port 3.<br>
+                    <strong>Duration:</strong> 10-20 days | <strong>Room:</strong> A-310
+                </div>
+                <div class="issue-footer">
+                    <span>Student: Priya Singh (22114012)</span>
+                    <span>Status: Queued for Tech Team</span>
+                </div>
+            </div>
+
+            <!-- Low Priority Example -->
+            <div class="issue-card low">
+                <div class="issue-header">
+                    <span class="issue-title">Cupboard repair</span>
+                    <span class="badge low">Low Priority</span>
+                </div>
+                <div class="issue-details">
+                    Hinge loose on upper shelf door.<br>
+                    <strong>Duration:</strong> 0-10 days | <strong>Room:</strong> B-405
+                </div>
+                <div class="issue-footer">
+                    <span>Student: Rohan Das (23111089)</span>
+                    <span>Status: Pending Review</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Simple JS just to toggle the custom input field if 'Other' is chosen -->
+    <script>
+        function toggleCustomInput(value) {
+            const customGroup = document.getElementById('customIssueGroup');
+            if (value === 'other') {
+                customGroup.classList.remove('hidden');
+            } else {
+                customGroup.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
